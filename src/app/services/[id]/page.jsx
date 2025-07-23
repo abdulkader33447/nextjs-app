@@ -73,8 +73,8 @@ const ServiceDetaipage = ({ params }) => {
         "Remote support for email handling, scheduling, data entry, and more.",
     },
   ];
-  const id = params.id;
-  const singleData = data.find((item) => item.id == id);
+  const id = params?.id;
+  const singleData = data?.find((item) => item.id == id);
   return (
     <div>
       <h1>Service Detail page</h1>
