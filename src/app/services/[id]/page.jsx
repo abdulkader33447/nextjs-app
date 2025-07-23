@@ -1,7 +1,6 @@
-import Link from "next/link";
 import React from "react";
 
-const Servicespage = ({}) => {
+const ServiceDetaipage = ({ params }) => {
   const data = [
     {
       id: "svc_a93jd8",
@@ -74,18 +73,16 @@ const Servicespage = ({}) => {
         "Remote support for email handling, scheduling, data entry, and more.",
     },
   ];
+  const id = params.id;
+  const singleData = data.find((item) => item.id == id);
   return (
     <div>
-      <h1>services</h1>
-      {data.map((item) => (
-        <div className="space-y-3">
-          <Link href={`/services/${item.id}`}>
-            <img src={item.service_image} alt="" />
-          </Link>
-        </div>
-      ))}
+      <h1>Service Detail page</h1>
+      <p>ID: {id}</p>
+      <p>{singleData.service_name}</p>
+      <img src={singleData.service_image} alt="" />
     </div>
   );
 };
 
-export default Servicespage;
+export default ServiceDetaipage;
