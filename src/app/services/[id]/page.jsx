@@ -75,7 +75,9 @@ const ServiceDetaipage = ({ params }) => {
   ];
   const id = params?.id;
   const singleData = data?.find((item) => item.id == id);
-  return (
+
+  if(singleData){
+return (
     <div>
       <h1>Service Detail page</h1>
       <p>ID: {id}</p>
@@ -83,6 +85,15 @@ const ServiceDetaipage = ({ params }) => {
       <img src={singleData.service_image} alt="" />
     </div>
   );
+  }
+  else{
+    return (
+      <>
+      <p>NOT FOUND SERVICES</p>
+      </>
+    )
+  }
+  
 };
 
 export default ServiceDetaipage;
