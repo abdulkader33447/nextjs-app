@@ -5,28 +5,31 @@ import React from "react";
 
 const NavBar = () => {
   const pathname = usePathname();
-  console.log(pathname, pathname.includes("dashboard"));
-  if (!pathname.includes("dashboard")) {
-    return (
-      <div>
-        <nav>
-          <ul className="flex justify-center gap-8">
-            <Link href="/">
-              <li>Home</li>
-            </Link>
-            <Link href="/services">
-              <li>Service</li>
-            </Link>
-            <Link href="/about">
-              <li>About</li>
-            </Link>
-          </ul>
-        </nav>
-      </div>
-    );
-  } else {
-    return <></>;
-  }
+
+  if (pathname.startsWith("/dashboard")) return null;
+
+  return (
+    <nav>
+      <ul className="flex justify-center gap-8">
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href="/posts" prefetch={false}>
+            Posts
+          </Link>
+        </li>
+        <li>
+          <Link href="/meals" prefetch={false}>
+            Meals
+          </Link>
+        </li>
+        <li>
+          <Link href="/about">About</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default NavBar;
