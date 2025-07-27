@@ -1,17 +1,15 @@
-export async function GET() {
-  const data = {
-    message: "Successfully get data",
-    error: false,
-    status: 200,
-  };
+import dbConnect from "@/lib/dbConnect";
 
-  return Response.json({ data });
+export async function GET() {
+  const data = await dbConnect("test").find({}).toArray();
+
+  return Response.json(data);
 }
 
 export async function POST(req) {
-  const postedData = await req.json()
+  const postedData = await req.json();
+  const result = await dbConnect("test").insertOne(postedData);
+  console.log(req);
 
-  console.log(req)
-
-  return Response.json({ postedData });
+  return Response.json(result);
 }
