@@ -25,6 +25,16 @@ const NavBar = () => {
           </Link>
         </li>
         <li>
+          <Link href="/products/addProducts" prefetch={false}>
+            Add Products
+          </Link>
+        </li>
+        <li>
+          <Link href="/products" prefetch={false}>
+            Products
+          </Link>
+        </li>
+        <li>
           <Link href="/about">About</Link>
         </li>
       </ul>
