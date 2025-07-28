@@ -1,11 +1,15 @@
 // import { redirect } from "next/navigation";
 import React from "react";
 
+export const dynamic = "force-dynamic";
+
 const ProductsPage = async () => {
-  const res = await fetch("http://localhost:3000/api/items", {
-    // cache: "force-cache",
-  });
+  const { NEXT_PUBLIC_SERVER_ADDRESS } = process.env;
+  console.log(NEXT_PUBLIC_SERVER_ADDRESS);
+  const res = await fetch(`${NEXT_PUBLIC_SERVER_ADDRESS}/api/items`);
+  //  console.log(res?.data);
   const data = await res.json();
+ 
 
   // if(data?.length > 5){
 

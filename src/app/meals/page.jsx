@@ -25,7 +25,7 @@ const mealsPage = async ({ searchParams }) => {
       );
       const data = await res.json();
       //   setMeals(data?.meals || []);
-      return data.meals;
+      return data?.meals;
     } catch (error) {
       console.log(error);
       return [];
