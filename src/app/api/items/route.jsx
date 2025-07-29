@@ -1,18 +1,20 @@
 import dbConnect from "@/lib/dbConnect";
-import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
 
 export async function GET() {
-  const data = await dbConnect("test").find({}).toArray();
+  try {
+    const data = await dbConnect("test").find({}).toArray();
 
-  return Response.json(data);
+    return NextResponse.json(data, { status: 200 });
+  } catch (error) {
+    console.error("GET API Error:", error);
+    return NextResponse.json(
+      { message: error.message || "Something went wrong!" },
+      { status: 500 }
+    );
+  }
 }
 
 export async function POST(req) {
-  const postedData = await req.json();
-  const result = await dbConnect("test").insertOne(postedData)
-  // revalidatePath("/products")
   
-  // console.log(req);
-
-  return Response.json(result);
 }
